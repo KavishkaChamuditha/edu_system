@@ -25,7 +25,7 @@ Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
 // student registration routes
 Route::get('student.register', [RegisteredUserController::class, 'create'])->name('student.register');
-Route::post('student.register', [RegisteredUserController::class, 'store']);
+Route::post('student.add', [RegisteredUserController::class, 'store'])->name('student.add');
 
 
 

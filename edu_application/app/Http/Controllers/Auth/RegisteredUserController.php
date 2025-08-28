@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use App\Models\Student;
+use Illuminate\Support\Facades\Mail;
 
 class RegisteredUserController extends Controller
 {
@@ -51,7 +53,7 @@ class RegisteredUserController extends Controller
 
         // Send email to admin
         Mail::raw("New student registered: {$student->first_name} {$student->last_name} ({$student->username})", function ($message) {
-            $message->to('admin@example.com')->subject('New Student Registration');
+            $message->to('kavishkachamuditha562@gmail.com')->subject('New Student Registration');
         });
 
         // Log the student in
@@ -59,5 +61,5 @@ class RegisteredUserController extends Controller
 
         return redirect()->route('dashboard'); // or wherever you want
     }
-    
+
 }
