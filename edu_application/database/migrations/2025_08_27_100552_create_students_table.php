@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('username', 100)->unique();
             $table->string('password');
             $table->string('email', 150)->unique();
+            $table->string('remember_token', 100)->nullable(); // ✅ Add this
             $table->timestamps();
         });
     }
