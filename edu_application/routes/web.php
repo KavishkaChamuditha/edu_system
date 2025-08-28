@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 // loading the login page
 Route::get('/', function () {
@@ -22,6 +23,20 @@ Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.
 // login page routes
 Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
 Route::post('login', [AuthenticatedSessionController::class, 'store']);
+
+// admin login
+Route::get('admin/login', [AuthenticatedSessionController::class, 'adminCreate'])->name('admin.login');
+Route::post('admin/login', [AuthenticatedSessionController::class, 'adminStore']);
+
+
+// Admin dashboard (auth middleware)
+Route::middleware('auth:admin')->group(function () {
+    Route::get('admin/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
+
+    Route::post('admin/logout', [AuthenticatedSessionController::class, 'admindestroy'])->name('admin.logout');
+});
 
 // student registration routes
 Route::get('student.register', [RegisteredUserController::class, 'create'])->name('student.register');

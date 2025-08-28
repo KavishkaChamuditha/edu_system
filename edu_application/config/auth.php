@@ -41,6 +41,11 @@ return [
         'driver' => 'session',
         'provider' => 'students',
     ],
+
+    'admin' => [
+        'driver' => 'session',
+        'provider' => 'admins', // create a provider for admins
+    ],
 ],
 
 
@@ -69,6 +74,10 @@ return [
     'users' => [
         'driver' => 'eloquent',
         'model' => App\Models\User::class,
+    ],
+     'admins' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Admin::class, // your Admin model
     ],
 ],
 

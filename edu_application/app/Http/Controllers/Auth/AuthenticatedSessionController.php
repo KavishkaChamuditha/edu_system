@@ -56,4 +56,44 @@ class AuthenticatedSessionController extends Controller
 
         return redirect('/');
     }
+
+    public function adminCreate()
+    {
+        return view('auth.admin.login'); // Blade view for admin login
+    }
+
+
+    public function adminStore(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string',
+        ]);
+
+       if (!Auth::guard('admin')->attempt($request->only('email', 'password'), $request->boolean('remember'))) {
+            return back()->withErrors([
+                'email' => 'Invalid email or password.',
+            ]);
+        }
+
+
+        $request->session()->regenerate();
+
+        return redirect()->intended('admin/dashboard');
+    }
+
+    // Logout
+    public function admindestroy(Request $request)
+    {
+       Auth::guard('admin')->logout();
+
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('admin/login');
+    }
+
+
+
 }
