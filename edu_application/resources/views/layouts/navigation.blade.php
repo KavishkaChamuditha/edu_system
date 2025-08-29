@@ -23,7 +23,10 @@
 	            </ul>
 	          </li>
 	          <li>
-              <a href="route('logout')">Portfolio</a>
+              <a href="{{ route('students.index') }}">Students</a>
+	          </li>
+	          <li>
+              <a href="{{ route('students.index') }}">Students Subscriptions</a>
 	          </li>
 	          <li>
               <!-- Authentication -->

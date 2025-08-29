@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 // loading the login page
@@ -49,6 +50,9 @@ Route::post('classes.store', [ClassController::class, 'storeClass'])->name('clas
 Route::get('/classes', [ClassController::class, 'viewClasses'])->name('classes.index');
 Route::put('/update.classes/{id}', [ClassController::class, 'updateClass'])->name('classes.update');
 Route::delete('/delete.classes/{id}', [ClassController::class, 'deleteClass'])->name('classes.destroy');
+
+Route::get('/students', [StudentController::class, 'Students'])->name('students.index');
+
 
 // student registration routes
 Route::get('student.register', [RegisteredUserController::class, 'create'])->name('student.register');
