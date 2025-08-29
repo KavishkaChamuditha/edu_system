@@ -7,7 +7,7 @@
 			<nav id="sidebar">
 				<div class="p-4 pt-5">
 		  		<a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
-             <h4 class="text-light">  Welcome {{ Auth::user()->first_name }} </h4> 
+             <h4 class="text-light">  Welcome {{ Auth::user()->name }} </h4> 
 	        <ul class="list-unstyled components mb-5">
 	          <li class="active">
 	            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
@@ -45,9 +45,9 @@
 	          </li>
 	          <li>
               <!-- Authentication -->
-            <form method="POST" action="{{ route('logout') }}">
+            <form method="POST" action="{{ route('admin.logout') }}">
                 @csrf
-                    <a href="route('logout')"
+                    <a href="route('admin.logout')"
                     onclick="event.preventDefault();
                             this.closest('form').submit();">
                         {{ __('Log Out') }}
@@ -76,7 +76,7 @@
         </div>
 
       </div>
-		</div>
+	</div>
 
 @include("partials.footer")
 @include("partials.js_filles")

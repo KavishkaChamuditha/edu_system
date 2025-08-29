@@ -9,7 +9,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 Route::get('/', function () {
     return redirect()->route('login');
 });
-
+ 
 // loding the dashboard
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -25,8 +25,13 @@ Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('lo
 Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
 // admin login
-Route::get('admin/login', [AuthenticatedSessionController::class, 'adminCreate'])->name('admin.login');
-Route::post('admin/login', [AuthenticatedSessionController::class, 'adminStore']);
+// Admin login form
+Route::get('admin/login', [AuthenticatedSessionController::class, 'adminCreate'])
+    ->name('admin.login');
+
+// Admin login submission
+Route::post('admin/login', [AuthenticatedSessionController::class, 'adminStore'])
+    ->name('admin.login.check');
 
 
 // Admin dashboard (auth middleware)

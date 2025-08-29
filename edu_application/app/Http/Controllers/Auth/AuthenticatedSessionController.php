@@ -55,7 +55,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
-    }
+    } 
 
     public function adminCreate()
     {
@@ -75,7 +75,6 @@ class AuthenticatedSessionController extends Controller
                 'email' => 'Invalid email or password.',
             ]);
         }
-
 
         $request->session()->regenerate();
 
