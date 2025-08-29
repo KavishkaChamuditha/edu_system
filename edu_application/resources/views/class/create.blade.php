@@ -1,18 +1,50 @@
 @extends('layouts.navigation')
 
-@section('page-title', 'Dashboard') 
+@section('page-title', 'Add New Class')
+
+@section('content-section')
+@extends('layouts.navigation')
+
+@section('page-title', 'Add New Class')
 
 @section('content-section')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+<form action="{{ route('classes.store') }}" method="POST">
+    @csrf
+    <div class="mb-3">
+        <label for="grade" class="form-label">Grade</label>
+        <input type="text" name="grade" id="grade" class="form-control" placeholder="Enter grade" required>
     </div>
 
-    
+    <div class="mb-3">
+        <label for="subject" class="form-label">Subject</label>
+        <input type="text" name="subject" id="subject" class="form-control" placeholder="Enter subject" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="teacher" class="form-label">Teacher</label>
+        <input type="text" name="teacher" id="teacher" class="form-control" placeholder="Enter teacher's name" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="start_date" class="form-label">Start Date</label>
+        <input type="date" name="start_date" id="start_date" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="time" class="form-label">Time</label>
+        <input type="time" name="time" id="time" class="form-control" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Class</button>
+</form>
+
+@endsection
+
 @endsection
