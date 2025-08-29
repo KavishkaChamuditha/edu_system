@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 class ClassController extends Controller
 {
+
+    public function createClass()
+    {
+        return view('class.create');
+    }
+
     public function store(Request $request)
     { 
         $request->validate([

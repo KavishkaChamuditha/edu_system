@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ClassController;
 use Illuminate\Support\Facades\Route;
 
 // loading the login page
@@ -43,7 +44,7 @@ Route::middleware('auth:admin')->group(function () {
 });
 
 // class CRUD start from here
-Route::get('add.class', [RegisteredUserController::class, 'createClass'])->name('add.class');
+Route::get('add.class', [ClassController::class, 'createClass'])->name('class.create');
 
 // student registration routes
 Route::get('student.register', [RegisteredUserController::class, 'create'])->name('student.register');

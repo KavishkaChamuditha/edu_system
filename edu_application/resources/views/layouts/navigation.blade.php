@@ -7,13 +7,16 @@
 			<nav id="sidebar">
 				<div class="p-4 pt-5">
 		  		<a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
-             <h4 class="text-light">  Welcome {{ Auth::user()->name }} </h4> 
+             <h4 class="text-light">  
+              Welcome @auth('admin')
+                {{ Auth::guard('admin')->user()->name }}
+              @endauth </h4> 
 	        <ul class="list-unstyled components mb-5">
 	          <li class="active">
 	            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Class</a>
 	            <ul class="collapse list-unstyled" id="homeSubmenu">
                 <li>
-                    <a href="route('add.class')">Add New Class</a>
+                    <a href="{{ route('class.create') }}">Add New Class</a>
                 </li>
                 <li>View Class</a>
                 </li>
