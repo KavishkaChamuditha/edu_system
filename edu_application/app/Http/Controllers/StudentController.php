@@ -15,3 +15,4 @@ class StudentController extends Controller
         return view('students.index', compact('students'));
     }
 }
+  

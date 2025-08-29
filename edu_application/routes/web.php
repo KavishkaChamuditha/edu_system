@@ -13,9 +13,9 @@ Route::get('/', function () {
 });
 
 // loding the dashboard
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [AuthenticatedSessionController::class, 'dashboard'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 // loading the profile pagees
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -52,7 +52,8 @@ Route::put('/update.classes/{id}', [ClassController::class, 'updateClass'])->nam
 Route::delete('/delete.classes/{id}', [ClassController::class, 'deleteClass'])->name('classes.destroy');
 
 Route::get('/students', [StudentController::class, 'Students'])->name('students.index');
-
+Route::post('/class/{id}/subscribe', [ClassController::class, 'subscribe'])->name('class.subscribe');
+Route::delete('/class/{id}/unsubscribe', [ClassController::class, 'unsubscribe'])->name('class.unsubscribe');
 
 // student registration routes
 Route::get('student.register', [RegisteredUserController::class, 'create'])->name('student.register');

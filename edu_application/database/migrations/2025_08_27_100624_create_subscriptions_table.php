@@ -24,6 +24,9 @@ return new class extends Migration
             $table->foreign('class_id')
                   ->references('id')->on('classes')
                   ->onDelete('cascade');
+                  
+            $table->unsignedTinyInteger('subscription_status')
+              ->default(0);
         });
     }
 
