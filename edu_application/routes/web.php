@@ -47,7 +47,8 @@ Route::middleware('auth:admin')->group(function () {
 Route::get('add.class', [ClassController::class, 'createClass'])->name('class.create');
 Route::post('classes.store', [ClassController::class, 'storeClass'])->name('classes.store');
 Route::get('/classes', [ClassController::class, 'viewClasses'])->name('classes.index');
-
+Route::put('/update.classes/{id}', [ClassController::class, 'updateClass'])->name('classes.update');
+Route::delete('/delete.classes/{id}', [ClassController::class, 'deleteClass'])->name('classes.destroy');
 
 // student registration routes
 Route::get('student.register', [RegisteredUserController::class, 'create'])->name('student.register');

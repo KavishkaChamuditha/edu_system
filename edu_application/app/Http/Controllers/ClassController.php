@@ -42,5 +42,36 @@ class ClassController extends Controller
         return view('class.index', compact('classes'));
     }
 
+    // Update class
+    public function updateClass(Request $request, $id)
+    {
+        $request->validate([
+            'grade'      => 'required|string|max:255',
+            'subject'    => 'required|string|max:255',
+            'teacher'    => 'required|string|max:255',
+            'start_date' => 'required|date',
+            'time'       => 'required|string',
+        ]);
+
+        $class = SchoolClass::findOrFail($id);
+        $class->grade = $request->input('grade');
+        $class->subject = $request->input('subject');
+        $class->teacher = $request->input('teacher');
+        $class->start_date = $request->input('start_date');
+        $class->time = $request->input('time');
+        $class->save();
+
+        return redirect()->back()->with('success', 'Class updated successfully.');
+    }
+
+    // Delete class
+    public function deleteClass($id)
+    {
+        $class = SchoolClass::findOrFail($id);
+        $class->delete();
+
+        return redirect()->back()->with('success', 'Class deleted successfully.');
+    }
+
 }
 
