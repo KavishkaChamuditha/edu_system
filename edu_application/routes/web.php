@@ -46,6 +46,8 @@ Route::middleware('auth:admin')->group(function () {
 // class CRUD start from here
 Route::get('add.class', [ClassController::class, 'createClass'])->name('class.create');
 Route::post('classes.store', [ClassController::class, 'storeClass'])->name('classes.store');
+Route::get('/classes', [ClassController::class, 'viewClasses'])->name('classes.index');
+
 
 // student registration routes
 Route::get('student.register', [RegisteredUserController::class, 'create'])->name('student.register');

@@ -18,7 +18,7 @@
                 <li>
                     <a href="{{ route('class.create') }}">Add New Class</a>
                 </li>
-                <li>View Class</a>
+                <li> <a href="{{ route('classes.index') }}"> View Class</a>
                 </li>
 	            </ul>
 	          </li>

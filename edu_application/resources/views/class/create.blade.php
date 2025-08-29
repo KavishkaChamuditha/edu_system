@@ -3,11 +3,6 @@
 @section('page-title', 'Add New Class')
 
 @section('content-section')
-@extends('layouts.navigation')
-
-@section('page-title', 'Add New Class')
-
-@section('content-section')
 
 @if(session('success'))
     <div class="alert alert-success">
@@ -44,7 +39,5 @@
 
     <button type="submit" class="btn btn-primary">Add Class</button>
 </form>
-
-@endsection
 
 @endsection

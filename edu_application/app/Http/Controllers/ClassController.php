@@ -32,5 +32,15 @@ class ClassController extends Controller
 
         return redirect()->route('class.create')->with('success', 'Class added successfully!');
     }
+
+    public function viewClasses()
+    {
+        // Fetch all classes from the database
+        $classes = SchoolClass::all();
+
+        // Pass data to the view
+        return view('class.index', compact('classes'));
+    }
+
 }
 
