@@ -1,15 +1,15 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Auth\RegisteredUserController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 
 // loading the login page
 Route::get('/', function () {
     return redirect()->route('login');
 });
- 
+
 // loding the dashboard
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -33,7 +33,6 @@ Route::get('admin/login', [AuthenticatedSessionController::class, 'adminCreate']
 Route::post('admin/login', [AuthenticatedSessionController::class, 'adminStore'])
     ->name('admin.login.check');
 
-
 // Admin dashboard (auth middleware)
 Route::middleware('auth:admin')->group(function () {
     Route::get('admin/dashboard', function () {
@@ -43,10 +42,11 @@ Route::middleware('auth:admin')->group(function () {
     Route::post('admin/logout', [AuthenticatedSessionController::class, 'admindestroy'])->name('admin.logout');
 });
 
+// class CRUD start from here
+Route::get('add.class', [RegisteredUserController::class, 'createClass'])->name('add.class');
+
 // student registration routes
 Route::get('student.register', [RegisteredUserController::class, 'create'])->name('student.register');
 Route::post('student.add', [RegisteredUserController::class, 'store'])->name('student.add');
 
-
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
