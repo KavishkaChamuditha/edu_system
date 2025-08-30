@@ -22,6 +22,13 @@ class StudentController extends Controller
 
         return response()->json($students);
     }
+
+    // View: Show students and their subscriptions
+    public function subscriptionsView()
+    {
+        $students = Student::with(['subscriptions.class'])->get();
+        return view('students.subscriptions', compact('students'));
+    }
     
 }
   

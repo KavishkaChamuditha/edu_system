@@ -52,6 +52,7 @@ Route::put('/update.classes/{id}', [ClassController::class, 'updateClass'])->nam
 Route::delete('/delete.classes/{id}', [ClassController::class, 'deleteClass'])->name('classes.destroy');
 
 Route::get('/students', [StudentController::class, 'Students'])->name('students.index');
+Route::get('/students/subscriptions', [StudentController::class, 'subscriptionsView'])->name('students.subscriptions');
 Route::post('/class/{id}/subscribe', [ClassController::class, 'subscribe'])->name('class.subscribe');
 Route::delete('/class/{id}/unsubscribe', [ClassController::class, 'unsubscribe'])->name('class.unsubscribe');
 

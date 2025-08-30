@@ -26,7 +26,7 @@
               <a href="{{ route('students.index') }}">Students</a>
 	          </li>
 	          <li>
-              <a href="{{ route('students.index') }}">Students Subscriptions</a>
+              <a href="{{ route('students.subscriptions') }}">Students Subscriptions</a>
 	          </li>
 	          <li>
               <!-- Authentication -->
