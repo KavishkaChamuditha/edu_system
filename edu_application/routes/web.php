@@ -59,4 +59,6 @@ Route::delete('/class/{id}/unsubscribe', [ClassController::class, 'unsubscribe']
 Route::get('student.register', [RegisteredUserController::class, 'create'])->name('student.register');
 Route::post('student.add', [RegisteredUserController::class, 'store'])->name('student.add');
 
+Route::get('/api/students/subscriptions', [StudentController::class, 'studentsWithSubscriptions']);
+
 require __DIR__ . '/auth.php';

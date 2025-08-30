@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Subscription;
 
 class Student extends Authenticatable
 {
@@ -22,4 +23,11 @@ class Student extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    // Relationship: Student has many subscriptions
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class, 'student_id');
+    }
 }
+ 

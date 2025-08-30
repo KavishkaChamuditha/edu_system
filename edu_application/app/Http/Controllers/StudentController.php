@@ -14,5 +14,14 @@ class StudentController extends Controller
         $students = Student::all();
         return view('students.index', compact('students'));
     }
+
+    // API: List all students and their subscriptions in JSON format
+    public function studentsWithSubscriptions()
+    {
+        $students = Student::with(['subscriptions.class'])->get();
+
+        return response()->json($students);
+    }
+    
 }
   
