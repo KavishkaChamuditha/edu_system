@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +26,6 @@ Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.
 Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
 Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
-// admin login
 // Admin login form
 Route::get('admin/login', [AuthenticatedSessionController::class, 'adminCreate'])
     ->name('admin.login');
@@ -51,15 +50,18 @@ Route::get('/classes', [ClassController::class, 'viewClasses'])->name('classes.i
 Route::put('/update.classes/{id}', [ClassController::class, 'updateClass'])->name('classes.update');
 Route::delete('/delete.classes/{id}', [ClassController::class, 'deleteClass'])->name('classes.destroy');
 
+// student subscrption and data handling code start from here
 Route::get('/students', [StudentController::class, 'Students'])->name('students.index');
 Route::get('/students/subscriptions', [StudentController::class, 'subscriptionsView'])->name('students.subscriptions');
 Route::post('/class/{id}/subscribe', [ClassController::class, 'subscribe'])->name('class.subscribe');
 Route::delete('/class/{id}/unsubscribe', [ClassController::class, 'unsubscribe'])->name('class.unsubscribe');
+Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
 // student registration routes
 Route::get('student.register', [RegisteredUserController::class, 'create'])->name('student.register');
 Route::post('student.add', [RegisteredUserController::class, 'store'])->name('student.add');
 
+// api route start from here
 Route::get('/api/students/subscriptions', [StudentController::class, 'studentsWithSubscriptions']);
 
 require __DIR__ . '/auth.php';

@@ -5,8 +5,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
+use App\Models\SchoolClass;
 use App\Models\Subscription;
+use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -46,30 +47,28 @@ class AuthenticatedSessionController extends Controller
     /**
      * Destroy an authenticated session.
      */
-    public function destroy(Request $request): RedirectResponse
+    
+    public function destroy(Request $request)
     {
         Auth::guard('student')->logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
-
         return redirect('/');
     }
 
     // Show dashboard with classes
-        public function dashboard()
-        {
-            $classes = \App\Models\SchoolClass::all();
+    public function dashboard()
+    {
+        $classes = SchoolClass::all();
 
-            $studentId = auth()->guard('student')->id();
-            $subscribedClassIds = \App\Models\Subscription::where('student_id', $studentId)
-                ->where('subscription_status', 1)
-                ->pluck('class_id');
-            $subscribedClasses = \App\Models\SchoolClass::whereIn('id', $subscribedClassIds)->get();
+        $studentId          = auth()->guard('student')->id();
+        $subscribedClassIds = Subscription::where('student_id', $studentId)
+            ->where('subscription_status', 1)
+            ->pluck('class_id');
+        $subscribedClasses = SchoolClass::whereIn('id', $subscribedClassIds)->get();
 
-            return view('dashboard', compact('classes', 'subscribedClasses'));
-        }
+        return view('dashboard', compact('classes', 'subscribedClasses'));
+    }
 
     public function adminCreate()
     {

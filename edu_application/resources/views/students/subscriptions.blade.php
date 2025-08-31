@@ -20,6 +20,9 @@
                     <td>{{ $student->first_name }} {{ $student->last_name }}</td>
                     <td>{{ $student->username }}</td>
                     <td>
+                        <!-- 0 mean pending subscribe
+                            1 mean student subscribed the class
+                            2 mean student unsubscribed the class -->
                         @if($student->subscriptions->count())
                             <ul>
                                 @foreach($student->subscriptions as $subscription)

@@ -51,9 +51,9 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // Send email to admin
+        // Send email to admin add your email to test the message
         Mail::raw("New student registered: {$student->first_name} {$student->last_name} ({$student->username})", function ($message) {
-            $message->to('kavishkachamuditha562@gmail.com')->subject('New Student Registration');
+            $message->to('admin@gmail.com')->subject('New Student Registration');
         });
 
         // Log the student in
