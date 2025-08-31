@@ -9,10 +9,9 @@ class Admin extends Authenticatable
 {
     use Notifiable;
 
-    // Specify the authentication guard for admin
+    // authentication guard for admin
     protected $guard = 'admin';
 
-    // Mass assignable attributes
     protected $fillable = [
         'name',
         'email',
@@ -25,7 +24,6 @@ class Admin extends Authenticatable
         'remember_token',
     ];
 
-    // Cast attributes (optional)
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];

@@ -33,6 +33,12 @@
                 </form>
             </div>
 
+            <h4 class="text-light">  
+                Welcome @auth('student')
+                    {{ Auth::guard('student')->user()->first_name }}
+                @endauth
+            </h4>
+ 
             <div class="card mb-4 shadow-sm">
                 <div class="card-header bg-primary text-white">
                     <h4 class="mb-0">Available Classes</h4>

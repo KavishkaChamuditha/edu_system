@@ -1,9 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\SchoolClass;
 use App\Models\Subscription;
+use Illuminate\Http\Request;
 
 class ClassController extends Controller
 {
@@ -54,12 +54,12 @@ class ClassController extends Controller
             'time'       => 'required|string',
         ]);
 
-        $class = SchoolClass::findOrFail($id);
-        $class->grade = $request->input('grade');
-        $class->subject = $request->input('subject');
-        $class->teacher = $request->input('teacher');
+        $class             = SchoolClass::findOrFail($id);
+        $class->grade      = $request->input('grade');
+        $class->subject    = $request->input('subject');
+        $class->teacher    = $request->input('teacher');
         $class->start_date = $request->input('start_date');
-        $class->time = $request->input('time');
+        $class->time       = $request->input('time');
         $class->save();
 
         return redirect()->back()->with('success', 'Class updated successfully.');
@@ -78,7 +78,7 @@ class ClassController extends Controller
     {
         $studentId = auth()->guard('student')->id(); // Make sure student is logged in
 
-        if (!$studentId) {
+        if (! $studentId) {
             return redirect()->route('dashboard')->with('error', 'Please login first!');
         }
 
@@ -92,17 +92,18 @@ class ClassController extends Controller
         }
 
         Subscription::create([
-            'student_id' => $studentId,
-            'class_id' => $id,
+            'student_id'          => $studentId,
+            'class_id'            => $id,
             'subscription_status' => 1, // Active
         ]);
 
         return redirect()->route('dashboard')->with('success', 'Class added successfully!');
     }
 
+    // unsubscribe classs function
     public function unsubscribe($id)
     {
-        $studentId = auth()->guard('student')->id();
+        $studentId    = auth()->guard('student')->id();
         $subscription = Subscription::where('student_id', $studentId)
             ->where('class_id', $id)
             ->where('subscription_status', 1)
@@ -116,6 +117,4 @@ class ClassController extends Controller
         return back()->with('error', 'Subscription not found.');
     }
 
-
 }
-

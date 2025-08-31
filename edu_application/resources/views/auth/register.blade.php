@@ -64,11 +64,11 @@
                             <input type="password" class="form-control" name="password_confirmation" required>
                         </div>
 
-                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                        <button type="submit" class="btn btn-dark w-100">Register</button>
                     </form>
 
                     <div class="mt-3 text-center">
-                        <a href="{{ route('login') }}">Already have an account? Login here</a>
+                        <a href="{{ route('login') }}" class="text-dark">Already have an account? Login here</a>
                     </div>
                 </div>
             </div>

@@ -8,7 +8,6 @@ class SchoolClass extends Model
 {
     use HasFactory;
 
-    // Correct table name
     protected $table = 'classes';
 
     protected $fillable = [
