@@ -74,8 +74,5 @@
   ```
 
 ## Notes
-- Make sure your database is writable by the web server (for SQLite).
 - Update mail settings in `.env` for email notifications.
 
-## SQL File
-- See `database/schema.sql` for a basic schema if you want to set up the DB manually.
