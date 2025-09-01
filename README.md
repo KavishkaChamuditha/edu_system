@@ -68,6 +68,10 @@
   ```bash
   php artisan app:delete-completed-classes
   ```
+- To run the API use this command
+ ```bash
+  http://127.0.0.1:8000/api/students/subscriptions
+  ```
 
 ## Notes
 - Make sure your database is writable by the web server (for SQLite).
