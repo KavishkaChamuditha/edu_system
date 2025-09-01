@@ -4,8 +4,7 @@
 - PHP >= 8.1
 - Composer
 - Node.js & npm (for frontend assets)
-- SQLite (or your preferred DB)
-
+- mysql
 ## Installation
 
 1. **Clone the repository:**
