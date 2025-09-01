@@ -75,4 +75,7 @@
 
 ## Notes
 - Update mail settings in `.env` for email notifications.
+- ## Authentication
+  
+This project uses [Laravel Breeze] for authentication.
 
