@@ -5,6 +5,7 @@
 - Composer
 - Node.js & npm (for frontend assets)
 - mysql
+- laravel/framework: 12.0
 ## Installation
 
 1. **Clone the repository:**
